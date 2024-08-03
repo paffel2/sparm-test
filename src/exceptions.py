@@ -1,0 +1,2 @@
+class BadValidation(Exception):
+    pass

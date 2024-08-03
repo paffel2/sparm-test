@@ -1,0 +1,6 @@
+DB_HOST=server_database
+DB_PORT=5432
+DB_USER=server
+DB_PASSWORD=123
+DB_NAME=database
+PAGE_SIZE=10
