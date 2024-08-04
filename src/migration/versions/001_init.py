@@ -114,7 +114,9 @@ def upgrade() -> None:
         sa.Column(
             "id", mysql.INTEGER(display_width=11), autoincrement=True, nullable=False
         ),
-        sa.Column("last_name", sa.String(length=255), nullable=True, comment="Фамилия"),
+        sa.Column(
+            "last_name", sa.String(length=255), nullable=False, comment="Фамилия"
+        ),
         sa.Column("first_name", sa.String(length=255), nullable=True, comment="Имя"),
         sa.Column(
             "patr_name", sa.String(length=255), nullable=True, comment="Отчество"
@@ -232,12 +234,12 @@ def upgrade() -> None:
             "id", mysql.INTEGER(display_width=11), autoincrement=True, nullable=False
         ),
         sa.Column(
-            "oid", sa.String(length=255), nullable=True, comment="OID организации"
+            "oid", sa.String(length=255), nullable=False, comment="OID организации"
         ),
         sa.Column(
             "name",
             sa.String(length=255),
-            nullable=True,
+            nullable=False,
             comment="Наименование организации",
         ),
         sa.Column(

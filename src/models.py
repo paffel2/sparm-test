@@ -52,7 +52,7 @@ class UserORM(Base, DefaultTable):
         "comment": "Пользователи",
         "mysql_auto_increment": "2",
     }
-    last_name = Column(String(255), nullable=True, comment="Фамилия")
+    last_name = Column(String(255), nullable=False, comment="Фамилия")
     first_name = Column(String(255), nullable=True, comment="Имя")
     patr_name = Column(String(255), nullable=True, comment="Отчество")
     gender_id = Column(
@@ -69,6 +69,9 @@ class UserORM(Base, DefaultTable):
     )
     login = Column(String(255), nullable=True, comment="Логин", unique=True)
     password = Column(Text, nullable=True, comment="Пароль")
+    documents: Mapped[list["DocumentsORM"]] = relationship(
+        primaryjoin="UserORM.id==DocumentsORM.user_id"
+    )
 
 
 class GenderORM(Base, DefaultTable):
@@ -130,7 +133,7 @@ class OrganizationORM(Base, DefaultTable):
         "mysql_engine": "InnoDB",
         "comment": "Организации",
     }
-    oid = Column(String(255), nullable=True, comment="OID организации", unique=True)
+    oid = Column(String(255), nullable=False, comment="OID организации", unique=True)
     name = Column(
-        String(255), nullable=True, comment="Наименование организации", unique=True
+        String(255), nullable=False, comment="Наименование организации", unique=True
     )
