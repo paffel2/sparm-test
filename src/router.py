@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, Header
 from fastapi.responses import JSONResponse
 from typing import Annotated, List
 from exceptions import NotAdmin
-from schemas import Package, UserAuth, UserUpdate, Document
+from schemas import Package, UserAuth, UserShow, UserUpdate, Document
 from sqlalchemy.ext.asyncio import AsyncSession
 from queries import (
     create_organization,
@@ -59,7 +59,7 @@ async def get_user_info(
     login: Annotated[str, Header()],
     password: Annotated[str, Header()],
     session: AsyncSession = Depends(get_session),
-):
+) -> UserShow:
     user_info = await get_user_info_by_login_and_password(login, password, session)
     return user_info
 
@@ -69,7 +69,7 @@ async def get_user_info(
     page: int = 1,
     admin: UserAuth = Depends(admin_authorization),
     session: AsyncSession = Depends(get_session),
-):
+) -> List[UserShow]:
     if admin.type_id == 1:
         limit = settings.PAGE_SIZE
         offset = (page - 1) * limit

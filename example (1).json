@@ -1,0 +1,92 @@
+[
+    {
+      "id": 80087332,
+      "referralGUID": "F234FG244422FFFFF4:232RFS",
+      "referralDate": "2024-01-23T18:55:02",
+      "Data": [
+        {
+          "Sender": {
+            "Organization": {
+                "oid": "1.2.5.23.543.1234.18972",
+                "fullName": "СП.АРМ"
+            }
+          },
+          "Users": [
+            {
+                "id": 1504926,
+                "lastName": "Иванова",
+                "firstName": "Екатерина",
+                "patrName": "Петровна",
+                "birthDate": "1996-06-08",
+                "sex": "2",
+                "phoneNumber": "9999999999",
+                "snils": "12495797018",
+                "inn": "027801597819",
+                "socStatus_id": "102",
+                "socStatusFed_Code": "8",
+                "pid": null,
+                "parPersonSurName_SurName": null,
+                "parPersonFirName_FirName": null,
+                "parPersonSecName_SecName": null,
+                "deputyKind_id": null,
+                "deputyOrg_id": "0",
+                "documentAuthority_id": null,
+                "documentDeputy_Ser": null,
+                "documentDeputy_Num": null,
+                "documentDeputy_Issue": null,
+                "documentDeputy_begDate": null,
+                "legalStatusVZN_id": null,
+                "legalStatusVZN_Name": null,
+                "legalStatusVZN_pid": null,
+                "legalStatusVZN_pName": null,
+                "employment_id": null,
+                "familyStatus_id": null,
+                "personFamilyStatus_IsMarried": null,
+                "Credentials":{
+                    "username": "login",
+                    "password": "pwd"
+                },
+                "Address": {
+                    "id": "11337703",
+                    "value": "450015, РОССИЯ, БАШКОРТОСТАН РЕСП, Г УФА, СОВЕТСКИЙ РАЙОН, РЫБНАЯ УЛ, д. 5, корп. Б, кв. ",
+                    "org_id": null,
+                    "post_id": null,
+                    "guid": "8479A314-A179-4874-A8FD-AC7CED2BCEE5"
+                },           
+                "Documents": [
+                    {
+                      "id": "18382434", 
+                      "documentType_id": 2,
+                      "documentType_Name": "Полис ОМС",
+                      "sprTerr_id": "1075",
+                      "type": "ОМС",
+                      "series": 12433,
+                      "number": "0253310891000710",
+                      "smo_id": "8000229",
+                      "beginDate": "2021-12-14",
+                      "endDate": null,
+                      "orgDep_Name": "РЕСО МЕД",
+                      "formType_id": "3",
+                      "lpu_id": "150028"
+                    },
+                    {
+                      "id": "18383277",
+                      "documentType_id": "1",
+                      "documentType_Name": "Паспорт гражданина Российской Федерации",
+                      "series": "86 21",
+                      "number": "407195",
+                      "beginDate": "2021-11-02",
+                      "endDate": null,
+                      "isTwoNation": null,
+                      "orgDep_id": "32625",
+                      "orgDep_Name": "МВД по Республике Башкортостан",
+                      "personEvn_begDT": "2023-10-26 08:58:19",
+                      "lpu_id": "150028"
+                    }
+                  ]
+            }
+          ]        
+        }
+      ]
+    }
+  ]

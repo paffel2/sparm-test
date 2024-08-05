@@ -7,6 +7,4 @@ sqlalchemy[asyncio]
 aiomysql
 alembic
 uvicorn
-json
-base64
-re
+cryptography

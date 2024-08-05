@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  server_database:
+    image: mysql
+    container_name: server_database
+    restart: always
+    env_file:
+    - env_template
+    ports:
+    -  3307:3306
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+
+  server:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: server
+    depends_on:
+      server_database:
+        condition: service_healthy
+    env_file:
+      - env_template
+    command: >
+      bash -c "alembic upgrade head && python3 src/main.py"
+    ports:
+    - 8000:8000

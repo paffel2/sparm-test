@@ -77,6 +77,26 @@ def oid_validation(v: str):
     return bad_pattern_validation(v, r"^([0-2])((\.[1-9]{1,7})){1,7}$")
 
 
+def check_gender(v: Optional[int]):
+    """
+    Функция проверки типа пола.
+    """
+    if v is None or v == 1 or v == 2:
+        return v
+    else:
+        raise AssertionError("Неверный тип пола")
+
+
+def check_document_type(v: int):
+    """
+    Функция проверки типа документа.
+    """
+    if v > 0 and v < 5:
+        return v
+    else:
+        raise AssertionError("Неверный тип документа")
+
+
 # Тип непустой строки.
 NotEmptyString = Annotated[str, AfterValidator(is_not_empty_string)]
 
@@ -121,7 +141,7 @@ class Document(DocumentData):
 
     model_config = ConfigDict(extra="allow")
     id: int
-    documentType_id: int
+    documentType_id: Annotated[int, AfterValidator(check_document_type)]
 
 
 class AddressSchema(BaseModel):
@@ -171,7 +191,7 @@ class UserUpdate(BaseModel):
     lastName: Optional[NotEmptyString] = None
     firstName: Optional[NotEmptyString] = None
     patrName: Optional[NotEmptyString] = None
-    sex: Optional[int] = None
+    sex: Annotated[Optional[int], AfterValidator(check_gender)] = None
     login: Optional[NotEmptyString] = None
     password: Optional[NotEmptyString] = None
 
@@ -212,7 +232,7 @@ class User(BaseModel):
     firstName: Optional[NotEmptyString] = None  # имя пользователя
     patrName: Optional[NotEmptyString] = None  # отчество пользователя
     birthDate: Optional[datetime.date] = None  # дата рождения
-    sex: Optional[int] = None  # пол
+    sex: Annotated[Optional[int], AfterValidator(check_gender)] = None  # пол
     phoneNumber: int  # номер телефона (обязательный)
     snils: Annotated[Optional[str | int], AfterValidator(check_snils)] = None
     inn: Annotated[Optional[str | int], AfterValidator(check_inn)] = None
