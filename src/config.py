@@ -1,7 +1,29 @@
+"""
+Модуль config, содержит параметры сервера.
+"""
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    """
+    Класс содержащий настройки сервера
+
+    DB_HOST: str  - хост базы данных
+
+    DB_PORT: int  - порт базы данных
+
+    DB_USER: str  - имя пользователя базы данных
+
+    DB_PASSWORD: str  - пароль базы данных
+
+    DB_NAME: str  - имя базы данных
+
+    PAGE_SIZE: int  - размер страниц для пагинации
+
+    DATABASE_URL: str - url для подключения к базе данных
+    """
+
     DB_HOST: str
     DB_PORT: int
     DB_USER: str

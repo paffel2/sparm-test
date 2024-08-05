@@ -1,17 +1,33 @@
-from sqlalchemy import Column, Identity, String, ForeignKey, Text, DateTime
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy.dialects import mysql
-from typing import Annotated, Optional
-import enum
-import uuid
-from datetime import datetime
+"""
+Модуль models содержит модели для работы с базой данных
+"""
 
+from sqlalchemy import Column, String, ForeignKey, Text, DateTime
+from sqlalchemy.orm import Mapped, relationship
+from sqlalchemy.dialects import mysql
 from database import Base
 
+# Аналог типа int(11) в базе MySql
 Integer = mysql.INTEGER(11)
 
 
 class DefaultTable:
+    """
+    Класс DefaultTable. Представляет собой поля таблицы, которые присутствуют во всех таблица.
+
+    id - id объекта.
+
+    create_datetime - Дата и время создания записи.
+
+    create_user_id - Автор создания записи.
+
+    modify_datetime - Дата и время последнего изменения записи.
+
+    modify_user_id - Автор последнего изменения записи.
+
+    deleted - Отметка об удалении записи.
+    """
+
     id = Column(
         Integer,
         primary_key=True,
@@ -46,6 +62,25 @@ class DefaultTable:
 
 
 class UserORM(Base, DefaultTable):
+    """
+    Класс UserORM. Представляет собой таблицу users.
+    наследуется от Base и DefaultTable
+
+    last_name - Фамилия.
+
+    first_name - Имя.
+
+    patr_name - Отчество.
+
+    gender_id - id пола.
+
+    type_id - id типа пользователя.
+
+    login - Логин.
+
+    password  - Пароль.
+    """
+
     __tablename__ = "users"
     __table_args__ = {
         "mysql_engine": "InnoDB",
@@ -75,6 +110,13 @@ class UserORM(Base, DefaultTable):
 
 
 class GenderORM(Base, DefaultTable):
+    """
+    Класс GenderORM. Представляет собой таблицу типов полов.
+    наследуется от Base и DefaultTable
+
+    name - Наименование.
+    """
+
     __tablename__ = "gender_types"
     __table_args__ = {
         "mysql_engine": "InnoDB",
@@ -85,6 +127,13 @@ class GenderORM(Base, DefaultTable):
 
 
 class UserTypesORM(Base, DefaultTable):
+    """
+    Класс UserTypesORM. Представляет собой таблицу типов пользователей.
+    наследуется от Base и DefaultTable
+
+    name - Наименование типа.
+    """
+
     __tablename__ = "user_types"
     __table_args__ = {
         "mysql_engine": "InnoDB",
@@ -95,6 +144,13 @@ class UserTypesORM(Base, DefaultTable):
 
 
 class DocumentTypesORM(Base, DefaultTable):
+    """
+    Класс DocumentTypesORM. Представляет собой таблицу типов документов.
+    наследуется от Base и DefaultTable
+
+    name - Наименование типа документа.
+    """
+
     __tablename__ = "document_types"
     __table_args__ = {
         "mysql_engine": "InnoDB",
@@ -107,6 +163,17 @@ class DocumentTypesORM(Base, DefaultTable):
 
 
 class DocumentsORM(Base, DefaultTable):
+    """
+    Класс DocumentsORM. Представляет собой таблицу документов.
+    наследуется от Base и DefaultTable
+
+    user_id  - id пользователя.
+
+    type_id - id типа документа.
+
+    data - Данные документов в формате JSON.
+    """
+
     __tablename__ = "documents"
     __table_args__ = {
         "mysql_engine": "InnoDB",
@@ -128,6 +195,15 @@ class DocumentsORM(Base, DefaultTable):
 
 
 class OrganizationORM(Base, DefaultTable):
+    """
+    Класс OrganizationORM. Представляет собой таблицу организаций.
+    наследуется от Base и DefaultTable
+
+    oid  - oid организации.
+
+    name - Наименование организации.
+    """
+
     __tablename__ = "organizations"
     __table_args__ = {
         "mysql_engine": "InnoDB",
